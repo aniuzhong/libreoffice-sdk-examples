@@ -1,0 +1,8 @@
+build/
+compile_commands.json
+
+*.swp
+.cache/
+
+include/com/
+include/org/

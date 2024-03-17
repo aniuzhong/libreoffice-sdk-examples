@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.22.1)
 project(LibreOfficeSdkExample CXX)
 
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTK3 REQUIRED gtk+-3.0)
 
 set(SDK_INCLUDE_DIR  "/usr/lib/libreoffice/sdk/include"  CACHE STRING  "OO_SDK_HOME/include")
 set(SDK_LIBRARY_DIR  "/usr/lib/libreoffice/sdk/lib"      CACHE STRING  "OO_SDK_HOME/lib")
@@ -24,11 +23,8 @@ add_compile_definitions(DGCC)
 add_compile_definitions(LINUX)
 add_compile_definitions(DCPPU_ENV=gcc3)
 
-include_directories(${GTK3_INCLUDE_DIRS})
 include_directories(${PROJECT_SOURCE_DIR}/include)
 include_directories(${SDK_INCLUDE_DIR})
-
-link_directories(${GTK3_LIBRARY_DIRS})
 link_directories(${SDK_LIBRARY_DIR})
 
 add_subdirectory(Drawing)

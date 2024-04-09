@@ -36,7 +36,7 @@ create_and_insert_shape(css::uno::Reference<css::lang::XComponent> draw_doc, css
 }
 
 static void
-set_slide_transition(css::uno::Reference<css::drawing::XDrawPage> page, css::presentation::FadeEffect effect, css::presentation::AnimationSpeed speed, int change, int duration)
+set_slide_transition(css::uno::Reference<css::drawing::XDrawPage> page, css::presentation::FadeEffect effect, css::presentation::AnimationSpeed speed, sal_Int64 change, sal_Int64 duration)
 {
     css::uno::Reference<css::lang::XServiceInfo> service_info(page, css::uno::UNO_QUERY);
     if (service_info->supportsService("com.sun.star.presentation.DrawPage")) {
@@ -98,7 +98,7 @@ int main()
         // after the animation has been finished
         shape_prop_set->setPropertyValue("DimHide", css::uno::Any(false));
         shape_prop_set->setPropertyValue("DimPrevious", css::uno::Any(true));
-        shape_prop_set->setPropertyValue("DimColor", css::uno::Any(0xff0000));
+        shape_prop_set->setPropertyValue("DimColor", css::uno::Any(sal_Int64(0xff0000)));
 
         // Set the slide transition for the second page
         page = css::uno::Reference<css::drawing::XDrawPage>(pages->getByIndex(1), css::uno::UNO_QUERY);
@@ -143,7 +143,7 @@ int main()
         css::uno::Reference<css::beans::XPropertySet> presentation_prop_set(presentation, css::uno::UNO_QUERY);
         presentation_prop_set->setPropertyValue("IsEndless", css::uno::Any(true));
         presentation_prop_set->setPropertyValue("IsAlwaysOnTop", css::uno::Any(true));
-        presentation_prop_set->setPropertyValue("Pause", css::uno::Any(0));
+        presentation_prop_set->setPropertyValue("Pause", css::uno::Any(sal_Int64(0)));
         presentation->start();
     } catch (css::uno::Exception &e) {
         std::cout << e.Message << '\n';

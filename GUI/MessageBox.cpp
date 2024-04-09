@@ -37,7 +37,7 @@ static bool isHighContrastModeActivated(css::uno::Reference<css::awt::XVclWindow
     bool is_activated = false;
 
     try {
-        int ui_color;
+        sal_Int32 ui_color;
         vcl_window_peer->getProperty("DisplayBackgroundColor") >>= ui_color;
         int red = ui_color / 65536;
         int green = (ui_color % 65536) / 256;

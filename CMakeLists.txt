@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.22.1)
 
-project(LibreOfficeSdkExample CXX)
+project(LibreOfficeSdkExamples C CXX)
 
 if(MSVC)
     set(SDK_INCLUDE_DIR  "C:\\cygwin\\home\\user\\lode\\dev\\core\\instdir\\sdk\\include"  CACHE STRING  "OO_SDK_HOME/include")

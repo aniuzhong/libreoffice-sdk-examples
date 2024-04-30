@@ -31,16 +31,16 @@ int main()
         // Find out page dimensions
         css::uno::Reference<css::beans::XPropertySet> page_props(page, css::uno::UNO_QUERY);
 
-        sal_Int64 page_width, page_height;
-        sal_Int64 page_border_top, page_border_left, page_border_right;
+        sal_Int32 page_width, page_height;
+        sal_Int32 page_border_top, page_border_left, page_border_right;
         page_props->getPropertyValue("Width") >>= page_width;
         page_props->getPropertyValue("Height") >>= page_height;
         page_props->getPropertyValue("BorderTop") >>= page_border_top;
         page_props->getPropertyValue("BorderLeft") >>= page_border_left;
         page_props->getPropertyValue("BorderRight") >>= page_border_right;
 
-        sal_Int64 draw_width = page_width - page_border_left - page_border_right;
-        sal_Int64 hor_center = page_border_left + draw_width / 2;
+        sal_Int32 draw_width = page_width - page_border_left - page_border_right;
+        sal_Int32 hor_center = page_border_left + draw_width / 2;
 
         // Data for organigram
         rtl::OUString org_units[2][4];
@@ -49,11 +49,11 @@ int main()
         org_units[1][1] = "Purchasing";  // level 1
         org_units[1][2] = "IT Services"; // level 1
         org_units[1][3] = "Sales";       // level 1
-        sal_Int64 level_count[2] = {1, 4};
+        sal_Int32 level_count[2] = {1, 4};
 
         // Calculate shape sizes and positions
-        sal_Int64 hor_space = 300;
-        sal_Int64 ver_space = 3000;
+        sal_Int32 hor_space = 300;
+        sal_Int32 ver_space = 3000;
         sal_Int32 shape_width = (draw_width - (level_count[1] - 1) * hor_space) / level_count[1];
         sal_Int32 shape_height = page_height / 20;
         sal_Int32 shape_x = page_width / 2 - shape_width / 2;
@@ -90,8 +90,8 @@ int main()
                     connector_props->setPropertyValue("StartShape", css::uno::Any(start_shape));
                     connector_props->setPropertyValue("EndShape", css::uno::Any(shape));
                     // Glue point positions: 0=top 1=left 2=bottom 3=right
-                    connector_props->setPropertyValue("StartGluePointIndex", css::uno::Any(sal_Int64(2)));
-                    connector_props->setPropertyValue("EndGluePointIndex", css::uno::Any(sal_Int64(0)));
+                    connector_props->setPropertyValue("StartGluePointIndex", css::uno::Any(sal_Int32(2)));
+                    connector_props->setPropertyValue("EndGluePointIndex", css::uno::Any(sal_Int32(0)));
                 }
             }
         }
